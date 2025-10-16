@@ -9,13 +9,13 @@ import com.fasterxml.jackson.databind.*;
 public class WeatherApp {
     private static final String USER_AGENT = "MyWeatherApp (nel20041@byui.edu)";
 
-    private static final Map<Integer, String> cityMap = new LinkedHashMap<>();
+    private static final Map<Integer, City> cityMap = new LinkedHashMap<>();
     static {
-        cityMap.put(1, "New York, NY (40.7128, -74.0060)");
-        cityMap.put(2, "Los Angeles, CA (34.0522, -118.2437)");
-        cityMap.put(3, "Chicago, IL (41.8781, -87.6298)");
-        cityMap.put(4, "Miami, FL (25.7617, -80.1918)");
-        cityMap.put(5, "Seattle, WA (47.6062, -122.3321)");
+        cityMap.put(1, new City("New York, NY", 40.7128, -74.0060));
+        cityMap.put(2, new City("Los Angeles, CA", 34.0522, -118.2437));
+        cityMap.put(3, new City("Chicago, IL", 41.8781, -87.6298));
+        cityMap.put(4, new City("Miami, FL", 25.7617, -80.1918));
+        cityMap.put(5, new City("Seattle, WA", 47.6062, -122.3321));
     }
 
     public static void main(String[] args) throws Exception {
@@ -24,7 +24,8 @@ public class WeatherApp {
         while (true) {
             System.out.println("\n=== Weather App Menu ===");
             for (var entry : cityMap.entrySet()) {
-                System.out.printf("%d) %s%n", entry.getKey(), entry.getValue());
+                City city = entry.getValue();
+                System.out.printf("%d) %s (%.4f, %.4f)%n", entry.getKey(), city.name, city.latitude, city.longitude);
             }
             System.out.println("6) Enter custom coordinates");
             System.out.println("0) Exit");
@@ -44,18 +45,11 @@ public class WeatherApp {
             }
 
             double lat, lon;
-            if (cityMap.containsKey(choice)) {
-                switch (choice) {
-                    case 1 -> { lat = 40.7128; lon = -74.0060; }
-                    case 2 -> { lat = 34.0522; lon = -118.2437; }
-                    case 3 -> { lat = 41.8781; lon = -87.6298; }
-                    case 4 -> { lat = 25.7617; lon = -80.1918; }
-                    case 5 -> { lat = 47.6062; lon = -122.3321; }
-                    default -> {
-                        System.out.println("Invalid city selection.");
-                        continue;
-                    }
-                }
+            City selectedCity = cityMap.get(choice);
+
+            if (selectedCity != null) {
+                lat = selectedCity.latitude;
+                lon = selectedCity.longitude;
             } else if (choice == 6) {
                 try {
                     System.out.print("Enter latitude (decimal degrees): ");
@@ -132,5 +126,18 @@ public class WeatherApp {
 
         ObjectMapper mapper = new ObjectMapper();
         return mapper.readTree(sb.toString());
+    }
+
+    // Inner class to represent city information
+    private static class City {
+        public final String name;
+        public final double latitude;
+        public final double longitude;
+
+        public City(String name, double latitude, double longitude) {
+            this.name = name;
+            this.latitude = latitude;
+            this.longitude = longitude;
+        }
     }
 }
