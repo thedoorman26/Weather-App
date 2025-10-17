@@ -78,7 +78,7 @@ public class WeatherApp {
     private static void fetchAndDisplayForecast(double lat, double lon) throws IOException {
         System.out.printf("Fetching forecast for coordinates: %.4f, %.4f%n", lat, lon);
 
-        // Step 1: Get forecast URL from /points
+        // Get forecast URL from /points
         String pointsUrl = String.format("https://api.weather.gov/points/%.4f,%.4f", lat, lon);
         JsonNode pointsJson = fetchJson(pointsUrl);
 
@@ -87,7 +87,7 @@ public class WeatherApp {
             throw new IOException("No forecast URL found for point");
         }
 
-        // Step 2: Fetch forecast
+        // Fetch forecast
         JsonNode forecastJson = fetchJson(forecastUrl);
         JsonNode periods = forecastJson.path("properties").path("periods");
 

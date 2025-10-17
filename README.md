@@ -1,32 +1,35 @@
 # Overview
 
-{Important! Do not say in this section that this is college assignment. Talk about what you are trying to accomplish as a software engineer to further your learning.}
+This is a project I am working on to get better familiarized with more complex aspects of Java, specifically with handling API calls.
 
-{Provide a description of the software that you wrote to demonstrate the Java language.}
+The program calls to api.weather.gov to generate weather forecasts for any set of coordinates, with a few presets baked in. It uses fasterxml.jackson to enable API calls, and it uses Maven to enable the implentation of fasterxml.jackson.
 
 {Describe your purpose for writing this software.}
+I chose API calls because I find them to be both very interesting, as well as something that I had been pretty unfamiliar with, so I thought this would be a good chance to broaden my skillset and learn something valuable.
 
-{Provide a link to your YouTube demonstration. It should be a 4-5 minute demo of the software running and a walkthrough of the code. Focus should be on sharing what you learned about the language syntax.}
+Here's a link to a demonstration of the software:
 
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video](https://www.youtube.com/watch?v=t2cSvGAHeHs)
 
 # Development Environment
 
-{Describe the tools that you used to develop the software}
-
-{Describe the programming language that you used and any libraries.}
+-Visual Studio Code IDE
+-Java, using Maven
+-Imported the fasterxml.jackson library
 
 # Useful Websites
 
-{Make a list of websites that you found helpful in this project}
+This article was useful for learning how to make API calls:
 
-- [Web Site Name](http://url.link.goes.here)
-- [Web Site Name](http://url.link.goes.here)
+- [Medium.com](https://medium.com/@archimedes.fagundes/5-ways-to-call-an-api-in-java-b3de65fb2022)
+
+Here's where you can find good tutorials on java syntax:
+
+- [W3Schools](https://www.w3schools.com/java/)
 
 # Future Work
 
-{Make a list of things that you need to fix, improve, and add in the future.}
+In the future I would like to add:
 
-- Item 1
-- Item 2
-- Item 3
+- The ability to run the program outside of the VS Code terminal
+- Alternate forecast types
