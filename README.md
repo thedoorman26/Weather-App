@@ -21,7 +21,7 @@ Here's a link to a demonstration of the software:
 
 This article was useful for learning how to make API calls:
 
-- [Medium.com](https://medium.com/@archimedes.fagundes/5-ways-to-call-an-api-in-java-b3de65fb2022)
+- [Medium](https://medium.com/@archimedes.fagundes/5-ways-to-call-an-api-in-java-b3de65fb2022)
 
 Here's where you can find good tutorials on java syntax:
 
